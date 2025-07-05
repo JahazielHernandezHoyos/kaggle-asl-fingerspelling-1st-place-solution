@@ -99,6 +99,41 @@ datamount/weights/cfg_2/fold-1/inference_args.json
 and can be added to a kaggle kernel and submitted.
 
 
+## Web Application
+
+This project includes a simple Flask web application to demonstrate the ASL fingerspelling model.
+
+### Running the Web Application
+
+1.  **Ensure all dependencies are installed:**
+    Make sure you have installed all packages from `requirements.txt`, including Flask and MediaPipe:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2.  **Ensure the model and associated files are present:**
+    The web application expects the TFLite model, inference arguments, and character map to be in their original locations as per the repository structure:
+    - `datamount/weights/cfg_2/fold-1/model.tflite`
+    - `datamount/weights/cfg_2/fold-1/inference_args.json`
+    - `datamount/character_to_prediction_index.json`
+    If you have not run the training and conversion scripts, ensure these files are downloaded or generated.
+
+3.  **Start the Flask application:**
+    Navigate to the root directory of the repository and run:
+    ```bash
+    python app.py
+    ```
+    The application will start by default on `http://127.0.0.1:5000/` (or `http://0.0.0.0:5000/` if running inside a Docker container, which makes it accessible from the host machine).
+
+4.  **Use the application:**
+    Open your web browser and go to the address provided by Flask. You will see an interface to upload a video file. After uploading, the application will process the video, run inference, and display the predicted ASL fingerspelling text.
+
+### Notes on Web Application Preprocessing:
+- The web application uses `opencv-python` to read video frames and `mediapipe` to extract holistic landmarks (face, hands, pose).
+- The landmark data is then preprocessed (normalized, padded/interpolated) to match the input requirements of the TFLite model. This preprocessing logic is adapted from the scripts in `data/ds_2.py`.
+- Due to potential differences in environments and video inputs, the preprocessing in the web app might yield slightly different results compared to the original training pipeline. It aims to be a close approximation for demonstration purposes.
+
+
 ## References
 
 We adapted squeezeformer components from these two great repositories: 
