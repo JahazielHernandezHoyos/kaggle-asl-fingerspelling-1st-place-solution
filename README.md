@@ -99,14 +99,14 @@ datamount/weights/cfg_2/fold-1/inference_args.json
 and can be added to a kaggle kernel and submitted.
 
 
-## Web Application
+## Web Application (FastAPI)
 
-This project includes a simple Flask web application to demonstrate the ASL fingerspelling model.
+This project includes a simple FastAPI web application to demonstrate the ASL fingerspelling model.
 
 ### Running the Web Application
 
 1.  **Ensure all dependencies are installed:**
-    Make sure you have installed all packages from `requirements.txt`, including Flask and MediaPipe:
+    Make sure you have installed all packages from `requirements.txt`, including FastAPI, Uvicorn, MediaPipe, TensorFlow, and OpenCV.
     ```bash
     pip install -r requirements.txt
     ```
@@ -118,15 +118,19 @@ This project includes a simple Flask web application to demonstrate the ASL fing
     - `datamount/character_to_prediction_index.json`
     If you have not run the training and conversion scripts, ensure these files are downloaded or generated.
 
-3.  **Start the Flask application:**
-    Navigate to the root directory of the repository and run:
+3.  **Start the FastAPI application:**
+    Navigate to the root directory of the repository and run the Uvicorn server:
     ```bash
-    python app.py
+    uvicorn main:app --reload --host 0.0.0.0 --port 8000
     ```
-    The application will start by default on `http://127.0.0.1:5000/` (or `http://0.0.0.0:5000/` if running inside a Docker container, which makes it accessible from the host machine).
+    - `main`: Refers to the `main.py` file.
+    - `app`: Refers to the `FastAPI` instance `app = FastAPI()` within `main.py`.
+    - `--reload`: Enables auto-reload for development.
+    - `--host 0.0.0.0`: Makes the server accessible on your network.
+    - `--port 8000`: Specifies the port.
 
 4.  **Use the application:**
-    Open your web browser and go to the address provided by Flask. You will see an interface to upload a video file. After uploading, the application will process the video, run inference, and display the predicted ASL fingerspelling text.
+    Open your web browser and go to `http://127.0.0.1:8000` (or the appropriate IP address if accessing from another device on your network). You will see an interface to upload a video file. After uploading, the application will process the video, run inference, and display the predicted ASL fingerspelling text.
 
 ### Notes on Web Application Preprocessing:
 - The web application uses `opencv-python` to read video frames and `mediapipe` to extract holistic landmarks (face, hands, pose).

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ASL Fingerspelling Prediction</title>
+    <title>ASL Fingerspelling Prediction (FastAPI)</title>
     <style>
         body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
         .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
@@ -16,10 +16,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>ASL Fingerspelling Prediction</h1>
+        <h1>ASL Fingerspelling Prediction (FastAPI)</h1>
         <p>Upload a video file to get the ASL fingerspelling prediction.</p>
-        <form method="post" action="/predict" enctype="multipart/form-data">
-            <input type="file" name="file" accept="video/*" required>
+        <form action="/predict/" enctype="multipart/form-data" method="post">
+            <input name="file" type="file" accept="video/*" required>
             <br>
             <input type="submit" value="Upload and Predict">
         </form>
