@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ASL Fingerspelling Prediction (FastAPI)</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        input[type="file"] { margin-bottom: 10px; }
+        input[type="submit"] { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #0056b3; }
+        .prediction-result { margin-top: 20px; padding: 15px; background-color: #e9ecef; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ASL Fingerspelling Prediction (FastAPI)</h1>
+        <p>Upload a video file to get the ASL fingerspelling prediction.</p>
+        <form action="/predict/" enctype="multipart/form-data" method="post">
+            <input name="file" type="file" accept="video/*" required>
+            <br>
+            <input type="submit" value="Upload and Predict">
+        </form>
+    </div>
+</body>
+</html>

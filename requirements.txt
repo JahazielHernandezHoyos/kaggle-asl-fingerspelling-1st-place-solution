@@ -2,8 +2,16 @@ kaggle==1.5.16
 neptune==1.3.1
 albumentations==1.3.1
 torch==1.13.1
-tensorflow==2.12.0
+tensorflow>=2.12.0 # For TFLite Interpreter and potential future full model use
 rapidfuzz==3.2.0
 timm==0.9.6
-opencv-python-headless==4.8.0.74
+opencv-python-headless==4.8.0.74 # For video processing
 transformers==4.32.1
+
+# Web application dependencies (FastAPI)
+fastapi>=0.70.0
+uvicorn[standard]>=0.15.0 # ASGI server
+python-multipart>=0.0.5 # For form data (file uploads)
+mediapipe>=0.8.5 # For landmark extraction
+# numpy is transitively included
+# Jinja2 for templates is transitively included with fastapi (optional, but good for HTML)
